@@ -1,9 +1,8 @@
 # Whisper
 
-[Table of contents](#table-of-contents)
-  
-  
+## Table of contents
 - [Whisper](#whisper)
+  - [Table of contents](#table-of-contents)
   - [General info](#general-info)
   - [Approach](#approach)
   - [Setup](#setup)
