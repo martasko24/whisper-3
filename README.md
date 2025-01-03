@@ -1,23 +1,40 @@
 # Whisper
 
-[[Blog]](https://openai.com/blog/whisper)
-[[Paper]](https://arxiv.org/abs/2212.04356)
-[[Model card]](https://github.com/openai/whisper/blob/main/model-card.md)
-[[Colab example]](https://colab.research.google.com/github/openai/whisper/blob/master/notebooks/LibriSpeech.ipynb)
+## Table of contents
 
-Whisper is a general-purpose speech recognition model. It is trained on a large dataset of diverse audio and is also a multitasking model that can perform multilingual speech recognition, speech translation, and language identification.
+- [Whisper](#whisper)
+  - [Table of contents](#table-of-contents)
+  - [General info](#general-info)
+  - [Approach](#approach)
+  - [Setup](#setup)
+  - [Available models and languages](#available-models-and-languages)
+  - [Usage](#usage)
+    - [Command-line usage](#command-line-usage)
+    - [Python usage](#python-usage)
+  - [More examples](#more-examples)
+  - [More info](#more-info)
+  - [License](#license)
+  
+## General info
 
+**Whisper** is a general-purpose model of speech recognition. It trained on a large dataset of diverse audio. It is also a multitasking model that recognizes, translates multilingual speech, and identifies language.
 
 ## Approach
 
-![Approach](https://raw.githubusercontent.com/openai/whisper/main/approach.png)
+A Transformer sequence-to-sequence model trains on various speech processing tasks, which include:
+* multilingual speech recognition, 
+* speech translation,
+* spoken language identification,
+* voice activity detection.
 
-A Transformer sequence-to-sequence model is trained on various speech processing tasks, including multilingual speech recognition, speech translation, spoken language identification, and voice activity detection. These tasks are jointly represented as a sequence of tokens to be predicted by the decoder, allowing a single model to replace many stages of a traditional speech-processing pipeline. The multitask training format uses a set of special tokens that serve as task specifiers or classification targets.
+These tasks are jointly represented as a sequence of tokens to be predicted by the decoder, allowing a single model to replace many stages of a traditional speech-processing pipeline. The multitask training format uses a set of special tokens that serve as task specifiers or classification targets.
+
+![Approach](https://raw.githubusercontent.com/openai/whisper/main/approach.png)
 
 
 ## Setup
 
-We used Python 3.9.9 and [PyTorch](https://pytorch.org/) 1.10.1 to train and test our models, but the codebase is expected to be compatible with Python 3.8-3.11 and recent PyTorch versions. The codebase also depends on a few Python packages, most notably [OpenAI's tiktoken](https://github.com/openai/tiktoken) for their fast tokenizer implementation. You can download and install (or update to) the latest release of Whisper with the following command:
+You should use Python 3.8-3.11 and recent PyTorch versions, although we used Python 3.9.9 and [PyTorch](https://pytorch.org/) 1.10.1 to train and test our models.The codebase also depends on a few Python packages, most notably [OpenAI's tiktoken](https://github.com/openai/tiktoken) for their fast tokenizer implementation. You can download and install (or update to) the latest release of Whisper with the following command:
 
     pip install -U openai-whisper
 
@@ -58,6 +75,7 @@ pip install setuptools-rust
 ## Available models and languages
 
 There are six model sizes, four with English-only versions, offering speed and accuracy tradeoffs.
+
 Below are the names of the available models and their approximate memory requirements and inference speed relative to the large model.
 The relative speeds below are measured by transcribing English speech on a A100, and the real-world speed may vary significantly depending on many factors including the language, the speaking speed, and the available hardware.
 
@@ -78,8 +96,9 @@ Whisper's performance varies widely depending on the language. The figure below 
 ![WER breakdown by language](https://github.com/openai/whisper/assets/266841/f4619d66-1058-4005-8f67-a9d811b77c62)
 
 
+## Usage 
 
-## Command-line usage
+### Command-line usage
 
 The following command will transcribe speech in audio files, using the `turbo` model:
 
@@ -100,7 +119,7 @@ Run the following to view all available options:
 See [tokenizer.py](https://github.com/openai/whisper/blob/main/whisper/tokenizer.py) for the list of all available languages.
 
 
-## Python usage
+### Python usage
 
 Transcription can also be performed within Python: 
 
@@ -143,6 +162,12 @@ print(result.text)
 ## More examples
 
 Please use the [🙌 Show and tell](https://github.com/openai/whisper/discussions/categories/show-and-tell) category in Discussions for sharing more example usages of Whisper and third-party extensions such as web demos, integrations with other tools, ports for different platforms, etc.
+
+## More info 
+* [[Blog]](https://openai.com/blog/whisper)
+* [[Paper]](https://arxiv.org/abs/2212.04356)
+* [[Model card]](https://github.com/openai/whisper/blob/main/model-card.md)
+* [[Colab example]](https://colab.research.google.com/github/openai/whisper/blob/master/notebooks/LibriSpeech.ipynb)
 
 
 ## License
