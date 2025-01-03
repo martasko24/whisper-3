@@ -1,6 +1,7 @@
 # Whisper
 
 ## Table of contents
+
 - [Whisper](#whisper)
   - [Table of contents](#table-of-contents)
   - [General info](#general-info)
@@ -20,14 +21,20 @@
 
 ## Approach
 
-A Transformer sequence-to-sequence model is trained on various speech processing tasks, including multilingual speech recognition, speech translation, spoken language identification, and voice activity detection. These tasks are jointly represented as a sequence of tokens to be predicted by the decoder, allowing a single model to replace many stages of a traditional speech-processing pipeline. The multitask training format uses a set of special tokens that serve as task specifiers or classification targets.
+A Transformer sequence-to-sequence model trains on various speech processing tasks, which include:
+* multilingual speech recognition, 
+* speech translation,
+* spoken language identification,
+* voice activity detection.
+
+These tasks are jointly represented as a sequence of tokens to be predicted by the decoder, allowing a single model to replace many stages of a traditional speech-processing pipeline. The multitask training format uses a set of special tokens that serve as task specifiers or classification targets.
 
 ![Approach](https://raw.githubusercontent.com/openai/whisper/main/approach.png)
 
 
 ## Setup
 
-We used Python 3.9.9 and [PyTorch](https://pytorch.org/) 1.10.1 to train and test our models, but the codebase is expected to be compatible with Python 3.8-3.11 and recent PyTorch versions. The codebase also depends on a few Python packages, most notably [OpenAI's tiktoken](https://github.com/openai/tiktoken) for their fast tokenizer implementation. You can download and install (or update to) the latest release of Whisper with the following command:
+You should use Python 3.8-3.11 and recent PyTorch versions, although we used Python 3.9.9 and [PyTorch](https://pytorch.org/) 1.10.1 to train and test our models.The codebase also depends on a few Python packages, most notably [OpenAI's tiktoken](https://github.com/openai/tiktoken) for their fast tokenizer implementation. You can download and install (or update to) the latest release of Whisper with the following command:
 
     pip install -U openai-whisper
 
@@ -68,6 +75,7 @@ pip install setuptools-rust
 ## Available models and languages
 
 There are six model sizes, four with English-only versions, offering speed and accuracy tradeoffs.
+
 Below are the names of the available models and their approximate memory requirements and inference speed relative to the large model.
 The relative speeds below are measured by transcribing English speech on a A100, and the real-world speed may vary significantly depending on many factors including the language, the speaking speed, and the available hardware.
 
